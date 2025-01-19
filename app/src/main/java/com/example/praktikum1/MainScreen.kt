@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.datastore.core.Data
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,16 +30,16 @@ fun MainScreen(navController: NavController, email: String, screen: String) {
         Box(modifier = Modifier.padding(paddingValues)) {
             when (screen) {
                 "home" -> HomeScreen(context, user)
-                "profile" -> ProfileScreen(context, user)
-                else -> Text("Unknown Screen")
+//                "profile" -> ProfileScreen(context, currentUser)
+//                else -> Text("Unknown Screen")
             }
         }
     }
 }
 
-private fun logout(userPreferences: UserPreferences, navController: NavController) {
+fun logout(userPreferences: UserPreferences, navController: NavController) {
     CoroutineScope(Dispatchers.IO).launch {
-        userPreferences.clearUser Data()
+        userPreferences.clearUserData()
         withContext(Dispatchers.Main) {
             navController.navigate("login") {
                 popUpTo("login") { inclusive = true }

@@ -70,7 +70,7 @@ fun ProfileScreen(context: Context, navController: NavController, currentUser: U
             Spacer(modifier = Modifier.height(32.dp))
 
             Button(onClick = {
-                logoutUser(context, navController)
+                logout(userPreferences, navController)
             }) {
                 Text(text = "Logout")
             }

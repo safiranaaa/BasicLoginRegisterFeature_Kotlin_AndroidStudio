@@ -53,7 +53,7 @@ class UserPreferences(context: Context) {
         return preferences[EMAIL_KEY] == email && preferences[PASSWORD_KEY] == password
     }
     // clearData
-    suspend fun clearUser Data() {
+    suspend fun clearUserData() {
         dataStore.edit { preferences ->
             preferences.clear()
         }
